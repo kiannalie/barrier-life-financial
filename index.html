@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Barrier Insurance and Financial</title>
+  <title>Barrier Insurance &amp; Financial — Get Your Free Quote</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAV (preserved) -->
   <header class="nav-wrapper">
     <nav class="nav container">
-      <a href="#" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <img src="logo.svg" alt="Barrier Insurance and Financial" class="logo-img" />
       </a>
       <ul class="nav-links">
@@ -43,7 +43,7 @@
       </ul>
       <div class="nav-actions">
         <button class="btn-ghost">Log in</button>
-        <button class="btn-primary">Check my price</button>
+        <a href="#quote-form" class="btn-primary">Check my price</a>
       </div>
       <button class="nav-hamburger" id="menuToggle" aria-label="Open menu">&#9776;</button>
     </nav>
@@ -60,284 +60,203 @@
       <a href="#" class="mobile-sub">How Life Insurance Works</a>
       <a href="#" class="mobile-sub">Do I Qualify?</a>
       <a href="#" class="mobile-sub">All Resources</a>
-      <a href="#" class="mobile-cta">Check my price</a>
+      <a href="#quote-form" class="mobile-cta">Check my price</a>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-content">
-        <div class="trust-badges">
-          <div class="badge">
-            <span class="badge-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="badge-label">BBB A+</span>
-          </div>
-          <div class="badge">
-            <span class="badge-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="badge-label">Trustpilot</span>
-          </div>
-          <div class="badge">
-            <span class="badge-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="badge-label">Google</span>
-          </div>
+  <section class="lp-hero" id="hero">
+    <div class="lp-hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge">Licensed Independent Broker</div>
+        <h1>Life Insurance Coverage in Minutes &mdash; <em>No Medical Exam. No Hassle.</em></h1>
+        <p>Thomas Berrios compares 15+ top-rated carriers to find you the lowest possible rate. Serving veterans, seniors 50+, and individuals with disabilities nationwide.</p>
+        <div class="trust-row">
+          <div class="trust-item"><span class="trust-check">&#10003;</span> No Medical Exam</div>
+          <div class="trust-item"><span class="trust-check">&#10003;</span> Plans from $15/mo</div>
+          <div class="trust-item"><span class="trust-check">&#10003;</span> 15+ Carriers</div>
+          <div class="trust-item"><span class="trust-check">&#10003;</span> FL &middot; TX &middot; CA &amp; More</div>
         </div>
-        <h1 class="hero-headline">Protect your family<br />in minutes</h1>
-        <p class="hero-sub">Affordable life insurance with no medical exams. 100% online.</p>
-        <button class="btn-primary btn-large">Check my price</button>
-        <div class="hero-awards">
-          <div class="award-item">
-            <span class="award-icon">&#127942;</span>
-            <span>Best</span>
-          </div>
-          <div class="award-item">
-            <span class="award-icon">&#127941;</span>
-            <span>#1 Online</span>
-          </div>
-          <div class="award-item">
-            <span class="award-icon">&#9989;</span>
-            <span>Trusted</span>
-          </div>
-        </div>
+        <a href="#quote-form" class="btn-yellow btn-large lp-hero-cta">See If You Qualify &rarr;</a>
       </div>
-      <div class="hero-image">
-        <div class="hero-img-placeholder">
-          <div class="family-icon">&#128106;</div>
-          <p>Your family, protected.</p>
+      <div class="hero-right">
+        <div class="photo-card">
+          <div class="photo-tag">&#127885; Family First Life</div>
+          <div class="photo-img-placeholder"></div>
+          <div class="photo-overlay">
+            <div class="photo-name">Thomas Berrios</div>
+            <div class="photo-title">Licensed Insurance Broker</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- REVIEWS -->
-  <section class="reviews section-padded">
-    <div class="container reviews-grid">
-      <div class="review-card">
-        <div class="review-source google">Google</div>
-        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="review-text">"Loved how easy it was to compare and customize the policy coverage amount!"</p>
-        <span class="reviewer">— Mike C.</span>
+  <!-- QUOTE FORM -->
+  <section class="form-section" id="quote-form">
+    <div class="form-container">
+      <div class="form-header">
+        <h2>Get Your Free, No-Obligation Quote</h2>
+        <p>Takes under 2 minutes. No credit card or medical exam required.</p>
       </div>
-      <div class="review-card">
-        <div class="review-source trustpilot">Trustpilot</div>
-        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="review-text">"Loved the bonus complimentary estate planning aids."</p>
-        <span class="reviewer">— S.L.</span>
-      </div>
-      <div class="review-card">
-        <div class="review-source google">Google</div>
-        <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="review-text">"Barrier has brought so much relief knowing my family will be taken care of."</p>
-        <span class="reviewer">— Georgia D.</span>
-      </div>
-    </div>
-  </section>
 
-  <!-- VALUE PROP -->
-  <section class="value-prop section-padded bg-light">
-    <div class="container text-center">
-      <h2 class="section-headline">#1 no-medical-exam, instant<br />life insurance provider</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">&#128337;</div>
-          <h3>Get covered in<br />10 minutes</h3>
+      <div class="step-indicator">
+        <div class="step active" id="step-dot-1">
+          <div class="step-num">1</div>
+          <div class="step-label">Coverage</div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#128181;</div>
-          <h3>Up to $5 million<br />in coverage</h3>
+        <div class="step-line" id="step-line-1"></div>
+        <div class="step" id="step-dot-2">
+          <div class="step-num">2</div>
+          <div class="step-label">Health</div>
         </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#128196;</div>
-          <h3>Free will &amp; trust<br />with $599</h3>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">&#127381;</div>
-          <h3>Your best price from<br />multiple carriers</h3>
+        <div class="step-line" id="step-line-2"></div>
+        <div class="step" id="step-dot-3">
+          <div class="step-num">3</div>
+          <div class="step-label">Contact</div>
         </div>
       </div>
-      <button class="btn-primary btn-large">Check my price</button>
-    </div>
-  </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how-it-works section-padded">
-    <div class="container how-inner">
-      <div class="phone-mockup">
-        <div class="phone-frame">
-          <div class="phone-screen">
-            <div class="phone-logo">Barrier<span>.</span></div>
-            <div class="phone-form">
-              <div class="form-line"></div>
-              <div class="form-line short"></div>
-              <div class="form-line"></div>
-              <button class="phone-btn">Continue</button>
+      <form id="quoteForm">
+
+        <!-- Step 1: Coverage -->
+        <div class="form-step" id="form-step-1">
+          <div class="q-block">
+            <div class="q-label">
+              <span class="q-num">1</span>
+              What type of coverage are you looking for?
+            </div>
+            <div class="options-grid">
+              <button type="button" class="opt-btn">Term Life Insurance</button>
+              <button type="button" class="opt-btn">Whole Life Insurance</button>
+              <button type="button" class="opt-btn">Final Expense</button>
+              <button type="button" class="opt-btn">IUL (Indexed Universal Life)</button>
             </div>
           </div>
+          <div class="q-block">
+            <div class="q-label">
+              <span class="q-num">2</span>
+              What is your age range?
+            </div>
+            <div class="options-grid">
+              <button type="button" class="opt-btn">20 &ndash; 34</button>
+              <button type="button" class="opt-btn">35 &ndash; 49</button>
+              <button type="button" class="opt-btn">50 &ndash; 64</button>
+              <button type="button" class="opt-btn">65+</button>
+            </div>
+          </div>
+          <button type="button" class="submit-btn step-next">Continue &rarr;</button>
         </div>
-      </div>
-      <div class="how-content">
-        <p class="how-label">How it works</p>
-        <h2>We calculate your rate<br />in real time, so you can<br />get covered in 10 minutes.</h2>
-        <p class="how-sub">Answer a few simple questions (no medical exam needed).</p>
-        <button class="btn-primary">Check my price</button>
+
+        <!-- Step 2: Health -->
+        <div class="form-step" id="form-step-2">
+          <div class="q-block">
+            <div class="q-label">
+              <span class="q-num">3</span>
+              How would you rate your overall health?
+            </div>
+            <div class="options-grid">
+              <button type="button" class="opt-btn">Excellent</button>
+              <button type="button" class="opt-btn">Good</button>
+              <button type="button" class="opt-btn">Fair</button>
+              <button type="button" class="opt-btn">I have some conditions</button>
+            </div>
+          </div>
+          <div class="q-block">
+            <div class="q-label">
+              <span class="q-num">4</span>
+              How much coverage do you need?
+            </div>
+            <div class="options-grid">
+              <button type="button" class="opt-btn">Under $100,000</button>
+              <button type="button" class="opt-btn">$100,000 &ndash; $250,000</button>
+              <button type="button" class="opt-btn">$250,000 &ndash; $500,000</button>
+              <button type="button" class="opt-btn">$500,000+</button>
+            </div>
+          </div>
+          <button type="button" class="submit-btn step-next">Continue &rarr;</button>
+        </div>
+
+        <!-- Step 3: Contact -->
+        <div class="form-step" id="form-step-3">
+          <div class="q-block">
+            <div class="q-label">
+              <span class="q-num">5</span>
+              Where should we send your quote?
+            </div>
+            <div class="input-row">
+              <input type="text" class="input-field" placeholder="First Name" required />
+              <input type="text" class="input-field" placeholder="Last Name" required />
+            </div>
+            <div class="input-row" style="margin-top:16px">
+              <input type="tel" class="input-field" placeholder="Phone Number" required />
+              <input type="text" class="input-field" placeholder="ZIP Code" required />
+            </div>
+            <input type="email" class="input-field" placeholder="Email Address" required style="margin-top:16px" />
+          </div>
+          <button type="submit" class="submit-btn">&#128274; Get My Free Quote &mdash; No Obligation</button>
+          <p class="form-disclaimer">
+            By submitting, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.
+            We will never sell your information.
+          </p>
+        </div>
+
+      </form>
+
+      <!-- Success State -->
+      <div class="success-screen" id="successScreen">
+        <div class="success-icon">&#10003;</div>
+        <h2>You&rsquo;re All Set!</h2>
+        <p>Thomas will reach out within 24 hours with your personalized quote options. Check your email for a confirmation.</p>
       </div>
     </div>
   </section>
 
-  <!-- COMPARISON TABLE -->
-  <section class="comparison section-padded bg-light">
-    <div class="container text-center">
-      <h2 class="section-headline">Life insurance made easy</h2>
-      <p class="section-sub">See how Barrier is changing the way people buy life insurance.</p>
-      <div class="table-wrapper">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th></th>
-              <th class="col-barrier">
-                <span class="table-logo">Barrier<span>.</span></span>
-              </th>
-              <th class="col-traditional">Traditional Insurance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Instant underwriting</td>
-              <td><span class="check yes">&#10003;</span></td>
-              <td><span class="check no">&#10005;</span></td>
-            </tr>
-            <tr>
-              <td>No medical exams</td>
-              <td><span class="check yes">&#10003;</span></td>
-              <td><span class="check no">&#10005;</span></td>
-            </tr>
-            <tr>
-              <td>Same day coverage</td>
-              <td><span class="check yes">&#10003;</span></td>
-              <td><span class="check no">&#10005;</span></td>
-            </tr>
-            <tr>
-              <td>Free legal aid</td>
-              <td><span class="check yes">&#10003;</span></td>
-              <td><span class="check no">&#10005;</span></td>
-            </tr>
-            <tr>
-              <td>Trusted carriers</td>
-              <td><span class="check yes">&#10003;</span></td>
-              <td><span class="check yes">&#10003;</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <button class="btn-primary btn-large">Check my price</button>
-    </div>
-  </section>
-
-  <!-- FREE WILLS & TRUSTS -->
-  <section class="wills section-padded bg-dark">
-    <div class="container wills-inner">
-      <div class="wills-content">
-        <h2>Free Wills &amp;<br />Trusts</h2>
-        <p>We've simplified estate planning so anyone can take care of it from their couch. Free with life insurance or can be purchased separately.</p>
-        <button class="btn-yellow">Learn more</button>
-      </div>
-      <div class="wills-image">
-        <div class="wills-img-placeholder">&#128081;</div>
+  <!-- WHY BARRIER -->
+  <section class="why-section">
+    <div class="why-container">
+      <h2 class="section-title">Why Choose Barrier?</h2>
+      <p class="why-sub">We&rsquo;re not just another insurance company &mdash; we&rsquo;re an independent broker who fights for your best rate.</p>
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="why-icon">&#128269;</span>
+          <h3>We Compare 15+ Carriers</h3>
+          <p>Unlike captive agents who sell one company&rsquo;s products, we shop the entire market to find your lowest rate from top-rated carriers.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#127973;</span>
+          <h3>No Medical Exam Required</h3>
+          <p>Many of our plans require zero medical exams. Answer a few simple health questions online and get covered today &mdash; no doctors, no blood tests.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#9889;</span>
+          <h3>Same-Day Coverage Available</h3>
+          <p>Get approved and covered in as little as 10 minutes. Protect your family today, not weeks from now after slow traditional underwriting.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#127894;</span>
+          <h3>Specialists in Veterans &amp; Seniors</h3>
+          <p>We specialize in finding affordable coverage for veterans, seniors 50+, and individuals with pre-existing conditions who think they can&rsquo;t qualify.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#128176;</span>
+          <h3>Plans Starting at $15/mo</h3>
+          <p>Life insurance is more affordable than most people think. We find plans that fit every budget without sacrificing the coverage your family needs.</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">&#129309;</span>
+          <h3>Personal, Local Service</h3>
+          <p>You&rsquo;re not talking to a call center. You work directly with a licensed broker who knows you by name and is there when your family needs to file a claim.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="faq section-padded">
-    <div class="container">
-      <h2 class="section-headline text-center">FAQs</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            What does life insurance cover?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Life insurance provides a death benefit to your beneficiaries if you pass away during the policy term. It can cover expenses like mortgage payments, childcare, education, and everyday living costs.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            What kind of life insurance does Barrier offer?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Barrier offers term life insurance policies through multiple trusted carriers, giving you competitive rates with no medical exam required.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            But I have insurance through my employer, isn't that enough?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Employer-provided life insurance is a great benefit, but it's typically only 1–2x your salary, which often isn't enough. It also doesn't follow you if you change jobs.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Who is eligible to apply?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>U.S. residents between the ages of 20 and 65 are generally eligible to apply. Eligibility may vary depending on the carrier and state.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            How much life insurance do I need?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>A common rule of thumb is 10–12x your annual income. However, your specific needs depend on your debts, dependents, and financial goals. Our tool helps you calculate the right amount.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Does Barrier offer a money-back guarantee?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Yes. Most policies include a 30-day free look period. If you're not satisfied, you can cancel for a full refund of any premiums paid.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            What makes Barrier different?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>We're an independent brokerage, which means we shop multiple carriers to find you the best rate — not just one company's offering. We also provide free wills and estate planning resources.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Can I speak with a real person?
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Absolutely. Our licensed agents are available by phone, email, or chat to walk you through your options at no cost.</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center" style="margin-top:2rem">
-        <button class="btn-outline">See all FAQs</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final-cta section-padded bg-dark">
-    <div class="container text-center">
-      <h2>Lock in your<br />best price today</h2>
-      <p>Over 40 years old? Your life insurance price will increase 8–10% every 6 months you wait to start coverage. Don't wait — protect your family now.</p>
-      <button class="btn-yellow btn-large">Check my price</button>
-    </div>
+  <!-- TESTIMONIAL -->
+  <section class="testimonial-section">
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <blockquote>I was nervous about life insurance but Thomas made it so easy. Got approved in minutes with no medical exam and my family is now fully protected. Best decision I made this year.</blockquote>
+    <div class="testimonial-author">&mdash; Maria G., Policyholder since 2024</div>
   </section>
 
   <!-- FOOTER -->
@@ -368,8 +287,6 @@
           <li><a href="#">Who We Are</a></li>
           <li><a href="#">Why Us</a></li>
           <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Partners</a></li>
           <li><a href="#">Agents</a></li>
         </ul>
       </div>
@@ -387,7 +304,7 @@
         <ul>
           <li><a href="tel:+18005551234">(800) 555-1234</a></li>
           <li><a href="mailto:hello@barrierinsurance.com">hello@barrierinsurance.com</a></li>
-          <li>Mon – Fri: 8am – 8pm CT</li>
+          <li>Mon &ndash; Fri: 8am &ndash; 8pm CT</li>
         </ul>
       </div>
     </div>
