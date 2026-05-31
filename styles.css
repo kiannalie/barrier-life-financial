@@ -119,6 +119,7 @@ h1, h2, h3, h4, h5, h6,
 .nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1257,6 +1258,38 @@ h1, h2, h3, h4, h5, h6,
   box-shadow: 0 0 0 4px rgba(5,102,141,0.1);
   background: var(--white);
 }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+.options-grid[data-error="true"] .opt-btn {
+  border-color: #e53e3e;
+  background: #fff5f5;
+}
+.options-grid[data-error="true"]::after {
+  content: 'Please select an option to continue.';
+  display: block;
+  grid-column: 1 / -1;
+  color: #e53e3e;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+.options-grid[data-error="true"] {
+  animation: shake 0.35s ease;
+}
+
+.input-field.input-error {
+  border-color: #e53e3e;
+  background: #fff5f5;
+  animation: shake 0.35s ease;
+}
+.input-field.input-error::placeholder { color: #e53e3e; }
 
 .input-row {
   display: grid;

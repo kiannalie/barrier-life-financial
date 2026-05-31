@@ -9,59 +9,14 @@
 </head>
 <body>
 
-  <!-- NAV (preserved) -->
+  <!-- NAV -->
   <header class="nav-wrapper">
     <nav class="nav container">
       <a href="index.html" class="nav-logo">
         <img src="logo.svg" alt="Barrier Insurance and Financial" class="logo-img" />
       </a>
-      <ul class="nav-links">
-        <li class="nav-dropdown">
-          <a href="#">Life Insurance &#9662;</a>
-          <ul class="dropdown-menu">
-            <li><a href="whole-life.html">Whole Life</a></li>
-            <li><a href="term-life.html">Term Life</a></li>
-            <li><a href="final-expense.html">Final Expense</a></li>
-            <li><a href="iul.html">IUL</a></li>
-          </ul>
-        </li>
-        <li class="nav-dropdown">
-          <a href="#">About Us &#9662;</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Who We Are</a></li>
-            <li><a href="#">Why Us</a></li>
-          </ul>
-        </li>
-        <li class="nav-dropdown">
-          <a href="#">Resources &#9662;</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">How Life Insurance Works</a></li>
-            <li><a href="#">Do I Qualify?</a></li>
-            <li><a href="#">All Resources</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div class="nav-actions">
-        <button class="btn-ghost">Log in</button>
-        <a href="#quote-form" class="btn-primary">Check my price</a>
-      </div>
-      <button class="nav-hamburger" id="menuToggle" aria-label="Open menu">&#9776;</button>
+      <a href="index.html" class="btn-primary">Check my price</a>
     </nav>
-    <div class="mobile-menu" id="mobileMenu">
-      <span class="mobile-section">Life Insurance</span>
-      <a href="whole-life.html" class="mobile-sub">Whole Life</a>
-      <a href="term-life.html" class="mobile-sub">Term Life</a>
-      <a href="final-expense.html" class="mobile-sub">Final Expense</a>
-      <a href="iul.html" class="mobile-sub">IUL</a>
-      <span class="mobile-section">About Us</span>
-      <a href="#" class="mobile-sub">Who We Are</a>
-      <a href="#" class="mobile-sub">Why Us</a>
-      <span class="mobile-section">Resources</span>
-      <a href="#" class="mobile-sub">How Life Insurance Works</a>
-      <a href="#" class="mobile-sub">Do I Qualify?</a>
-      <a href="#" class="mobile-sub">All Resources</a>
-      <a href="#quote-form" class="mobile-cta">Check my price</a>
-    </div>
   </header>
 
   <!-- HERO -->
@@ -108,7 +63,7 @@
         <div class="step-line" id="step-line-1"></div>
         <div class="step" id="step-dot-2">
           <div class="step-num">2</div>
-          <div class="step-label">Health</div>
+          <div class="step-label">Details</div>
         </div>
         <div class="step-line" id="step-line-2"></div>
         <div class="step" id="step-dot-3">
@@ -124,22 +79,34 @@
           <div class="q-block">
             <div class="q-label">
               <span class="q-num">1</span>
-              What type of coverage are you looking for?
+              What describes you best? *
             </div>
-            <div class="options-grid">
-              <button type="button" class="opt-btn">Term Life Insurance</button>
-              <button type="button" class="opt-btn">Whole Life Insurance</button>
-              <button type="button" class="opt-btn">Final Expense</button>
-              <button type="button" class="opt-btn">IUL (Indexed Universal Life)</button>
+            <div class="options-grid" data-field="coverageType" data-required="true">
+              <button type="button" class="opt-btn">Veteran</button>
+              <button type="button" class="opt-btn">Family of a Veteran</button>
+              <button type="button" class="opt-btn">Spouse of a Veteran</button>
+              <button type="button" class="opt-btn">No, but I'm a Senior (55+)</button>
             </div>
           </div>
           <div class="q-block">
             <div class="q-label">
               <span class="q-num">2</span>
-              What is your age range?
+              What is your main reason for seeking coverage? *
             </div>
-            <div class="options-grid">
-              <button type="button" class="opt-btn">20 &ndash; 34</button>
+            <div class="options-grid" data-field="reason" data-required="true">
+              <button type="button" class="opt-btn">Burial &amp; Funeral Costs</button>
+              <button type="button" class="opt-btn">Leaving a Tax-Free Legacy</button>
+              <button type="button" class="opt-btn">Medical or Debt Protection</button>
+              <button type="button" class="opt-btn">I'm not sure yet</button>
+            </div>
+          </div>
+          <div class="q-block">
+            <div class="q-label">
+              <span class="q-num">3</span>
+              What is your current age? *
+            </div>
+            <div class="options-grid" data-field="age" data-required="true">
+              <button type="button" class="opt-btn">18 &ndash; 34</button>
               <button type="button" class="opt-btn">35 &ndash; 49</button>
               <button type="button" class="opt-btn">50 &ndash; 64</button>
               <button type="button" class="opt-btn">65+</button>
@@ -148,14 +115,14 @@
           <button type="button" class="submit-btn step-next">Continue &rarr;</button>
         </div>
 
-        <!-- Step 2: Health -->
-        <div class="form-step" id="form-step-2">
+        <!-- Step 2: Details -->
+        <div class="form-step" id="form-step-2" style="display:none">
           <div class="q-block">
             <div class="q-label">
-              <span class="q-num">3</span>
-              How would you rate your overall health?
+              <span class="q-num">4</span>
+              How would you describe your overall health in the last 2 years? *
             </div>
-            <div class="options-grid">
+            <div class="options-grid" data-field="health" data-required="true">
               <button type="button" class="opt-btn">Excellent</button>
               <button type="button" class="opt-btn">Good</button>
               <button type="button" class="opt-btn">Fair</button>
@@ -164,35 +131,53 @@
           </div>
           <div class="q-block">
             <div class="q-label">
-              <span class="q-num">4</span>
-              How much coverage do you need?
+              <span class="q-num">5</span>
+              Which monthly budget range best fits your financial goals for this protection? *
             </div>
-            <div class="options-grid">
-              <button type="button" class="opt-btn">Under $100,000</button>
-              <button type="button" class="opt-btn">$100,000 &ndash; $250,000</button>
-              <button type="button" class="opt-btn">$250,000 &ndash; $500,000</button>
-              <button type="button" class="opt-btn">$500,000+</button>
+            <div class="options-grid" data-field="budget" data-required="true">
+              <button type="button" class="opt-btn">$75 &ndash; $125 / month (Standard Coverage)</button>
+              <button type="button" class="opt-btn">$125 &ndash; $200 / month (Enhanced Coverage)</button>
+              <button type="button" class="opt-btn">$200+ / month (Maximum Peace of Mind / Legacy)</button>
+            </div>
+          </div>
+          <div class="q-block">
+            <div class="q-label">
+              <span class="q-num">6</span>
+              Who will be your beneficiary? *
+            </div>
+            <input type="text" id="beneficiary" class="input-field" placeholder="Enter beneficiary name" required />
+          </div>
+          <div class="q-block">
+            <div class="q-label">
+              <span class="q-num">7</span>
+              When are you looking to get coverage? *
+            </div>
+            <div class="options-grid" data-field="timeline" data-required="true">
+              <button type="button" class="opt-btn">Immediately (24hrs &ndash; 48hrs)</button>
+              <button type="button" class="opt-btn">Within a week</button>
+              <button type="button" class="opt-btn">Within the next 30 days</button>
+              <button type="button" class="opt-btn">Just researching</button>
             </div>
           </div>
           <button type="button" class="submit-btn step-next">Continue &rarr;</button>
         </div>
 
         <!-- Step 3: Contact -->
-        <div class="form-step" id="form-step-3">
+        <div class="form-step" id="form-step-3" style="display:none">
           <div class="q-block">
             <div class="q-label">
-              <span class="q-num">5</span>
+              <span class="q-num">8</span>
               Where should we send your quote?
             </div>
             <div class="input-row">
-              <input type="text" class="input-field" placeholder="First Name" required />
-              <input type="text" class="input-field" placeholder="Last Name" required />
+              <input type="text" id="firstName" class="input-field" placeholder="First Name" required />
+              <input type="text" id="lastName" class="input-field" placeholder="Last Name" required />
             </div>
             <div class="input-row" style="margin-top:16px">
-              <input type="tel" class="input-field" placeholder="Phone Number" required />
-              <input type="text" class="input-field" placeholder="ZIP Code" required />
+              <input type="tel" id="phoneNumber" class="input-field" placeholder="Phone Number" required />
+              <input type="text" id="zipCode" class="input-field" placeholder="ZIP Code" required />
             </div>
-            <input type="email" class="input-field" placeholder="Email Address" required style="margin-top:16px" />
+            <input type="email" id="emailAddress" class="input-field" placeholder="Email Address" required style="margin-top:16px" />
           </div>
           <button type="submit" class="submit-btn">&#128274; Get My Free Quote &mdash; No Obligation</button>
           <p class="form-disclaimer">
