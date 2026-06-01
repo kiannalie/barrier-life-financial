@@ -1361,8 +1361,21 @@ h1, h2, h3, h4, h5, h6,
   font-size: 1rem;
   color: var(--text-body);
   max-width: 420px;
-  margin: 0 auto;
+  margin: 0 auto 32px;
   line-height: 1.65;
+}
+.success-cta-row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.success-btn {
+  text-decoration: none;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px;
 }
 
 /* ---- WHY BARRIER ---- */
