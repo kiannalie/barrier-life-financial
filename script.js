@@ -134,6 +134,8 @@ if (quoteForm && successScreen) {
         quoteForm.style.display = 'none';
         document.querySelector('.step-indicator').style.display = 'none';
         successScreen.classList.add('visible');
+        // Meta Pixel: fire Lead event when form is successfully submitted
+        if (typeof fbq === 'function') { fbq('track', 'Lead'); }
       } else {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Something went wrong — try again';
