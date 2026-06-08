@@ -10,6 +10,15 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request body' }) };
   }
 
+  // Server-side guard: reject leads missing required contact fields
+  const missing = ['firstName', 'lastName', 'phone', 'email'].filter(f => !data[f] || !String(data[f]).trim());
+  if (missing.length) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ error: 'Missing required fields', fields: missing }),
+    };
+  }
+
   const payload = {
     sid:          process.env.RINGY_SID,
     authToken:    process.env.RINGY_AUTH_TOKEN,
@@ -28,12 +37,20 @@ exports.handler = async (event) => {
     timeline:      data.timeline,
   };
 
-  const response = await fetch('https://app.ringy.com/api/public/leads/new-lead', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
+  try {
+    const response = await fetch('https://app.ringy.com/api/public/leads/new-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
 
-  const result = await response.json().catch(() => ({}));
-  return { statusCode: response.status, body: JSON.stringify(result) };
+    const result = await response.json().catch(() => ({}));
+    return { statusCode: response.status, body: JSON.stringify(result) };
+  } catch (err) {
+    console.error('Ringy API error:', err);
+    return {
+      statusCode: 502,
+      body: JSON.stringify({ error: 'Failed to reach Ringy API', detail: err.message }),
+    };
+  }
 };

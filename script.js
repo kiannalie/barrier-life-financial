@@ -99,6 +99,10 @@ if (quoteForm && successScreen) {
   quoteForm.addEventListener('submit', async e => {
     e.preventDefault();
 
+    // Enforce JS validation on Step 3 (same system used by Steps 1 & 2)
+    // This catches blank required fields even if native browser validation is bypassed
+    if (!validateStep(currentStep)) return;
+
     const getSelected = field => {
       const grid = document.querySelector(`[data-field="${field}"]`);
       return grid ? (grid.querySelector('.opt-btn.selected')?.textContent.trim() ?? '') : '';
@@ -121,7 +125,7 @@ if (quoteForm && successScreen) {
 
     const submitBtn = quoteForm.querySelector('[type="submit"]');
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting…';
+    submitBtn.textContent = 'Submitting\u2026';
 
     try {
       const res = await fetch('/.netlify/functions/submit-lead', {
@@ -138,11 +142,11 @@ if (quoteForm && successScreen) {
         if (typeof fbq === 'function') { fbq('track', 'Lead'); }
       } else {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Something went wrong — try again';
+        submitBtn.textContent = 'Something went wrong \u2014 try again';
       }
     } catch {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Something went wrong — try again';
+      submitBtn.textContent = 'Something went wrong \u2014 try again';
     }
   });
 }
