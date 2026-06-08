@@ -20,15 +20,15 @@ exports.handler = async (event) => {
     };
   }
 
-  const payload = {
-    sid:          process.env.RINGY_SID,
-    authToken:    process.env.RINGY_AUTH_TOKEN,
-    phone_number: data.phone,
-    email:        data.email,
-    first_name:   data.firstName,
-    last_name:    data.lastName,
-    zip:          data.zip,
-    // Additional lead context sent as notes/custom fields
+  // ── 1. Ringy payload ──────────────────────────────────────────────────────
+  const ringyPayload = {
+    sid:           process.env.RINGY_SID,
+    authToken:     process.env.RINGY_AUTH_TOKEN,
+    phone_number:  data.phone,
+    email:         data.email,
+    first_name:    data.firstName,
+    last_name:     data.lastName,
+    zip:           data.zip,
     coverage_type: data.coverageType,
     reason:        data.reason,
     age:           data.age,
@@ -38,36 +38,82 @@ exports.handler = async (event) => {
     timeline:      data.timeline,
   };
 
-  // Log what we're sending to Ringy (redact credentials)
   console.log('Sending to Ringy:', JSON.stringify({
-    ...payload,
-    sid: payload.sid ? '[SET]' : '[MISSING]',
-    authToken: payload.authToken ? '[SET]' : '[MISSING]',
+    ...ringyPayload,
+    sid:       ringyPayload.sid       ? '[SET]' : '[MISSING]',
+    authToken: ringyPayload.authToken ? '[SET]' : '[MISSING]',
   }));
 
-  try {
-    const response = await fetch('https://app.ringy.com/api/public/leads/new-lead', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+  // ── 2. Google Sheets payload ──────────────────────────────────────────────
+  const sheetPayload = {
+    timestamp:    new Date().toISOString(),
+    firstName:    data.firstName,
+    lastName:     data.lastName,
+    phone:        data.phone,
+    email:        data.email,
+    zip:          data.zip,
+    coverageType: data.coverageType,
+    reason:       data.reason,
+    age:          data.age,
+    health:       data.health,
+    budget:       data.budget,
+    beneficiary:  data.beneficiary,
+    timeline:     data.timeline,
+  };
 
-    const result = await response.json().catch(() => ({}));
+  // ── 3. Fire both requests in parallel ────────────────────────────────────
+  const ringyPromise = fetch('https://app.ringy.com/api/public/leads/new-lead', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(ringyPayload),
+  });
 
-    // Log the full Ringy response for debugging
-    console.log('Ringy response status:', response.status);
-    console.log('Ringy response body:', JSON.stringify(result));
+  const sheetWebhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
+  const sheetPromise = sheetWebhookUrl
+    ? fetch(sheetWebhookUrl, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(sheetPayload),
+      })
+    : Promise.resolve(null);
 
-    if (!response.ok) {
-      console.error('Ringy returned non-OK status:', response.status, JSON.stringify(result));
+  // ── 4. Await both; Sheets failure never blocks Ringy ─────────────────────
+  const [ringyResponse, sheetResponse] = await Promise.allSettled([
+    ringyPromise,
+    sheetPromise,
+  ]);
+
+  // Ringy result
+  let ringyStatus = 502;
+  let ringyResult = {};
+  if (ringyResponse.status === 'fulfilled' && ringyResponse.value) {
+    ringyStatus = ringyResponse.value.status;
+    ringyResult = await ringyResponse.value.json().catch(() => ({}));
+    console.log('Ringy response status:', ringyStatus);
+    console.log('Ringy response body:', JSON.stringify(ringyResult));
+    if (ringyStatus < 200 || ringyStatus >= 300) {
+      console.error('Ringy returned non-OK status:', ringyStatus, JSON.stringify(ringyResult));
     }
-
-    return { statusCode: response.status, body: JSON.stringify(result) };
-  } catch (err) {
-    console.error('Ringy API error:', err);
-    return {
-      statusCode: 502,
-      body: JSON.stringify({ error: 'Failed to reach Ringy API', detail: err.message }),
-    };
+  } else {
+    console.error('Ringy request failed:', ringyResponse.reason);
   }
+
+  // Google Sheets result (non-blocking — log only)
+  if (!sheetWebhookUrl) {
+    console.warn('GOOGLE_SHEET_WEBHOOK_URL not set — skipping Sheet backup');
+  } else if (sheetResponse.status === 'fulfilled' && sheetResponse.value) {
+    const sheetStatus = sheetResponse.value.status;
+    console.log('Google Sheet response status:', sheetStatus);
+    if (sheetStatus < 200 || sheetStatus >= 300) {
+      console.error('Google Sheet returned non-OK status:', sheetStatus);
+    }
+  } else {
+    console.error('Google Sheet request failed:', sheetResponse.reason);
+  }
+
+  // Return Ringy's response to the browser (Sheet is a silent backup)
+  return {
+    statusCode: ringyStatus,
+    body: JSON.stringify(ringyResult),
+  };
 };
