@@ -21,21 +21,26 @@ exports.handler = async (event) => {
   }
 
   // ── 1. Ringy payload ──────────────────────────────────────────────────────
+  // System fields (phone_number, email, first_name, last_name, zip) are
+  // standard Ringy fields. All others are custom fields — their key names
+  // must match exactly what Thomas has entered in Lead Field Mapping in Ringy.
   const ringyPayload = {
-    sid:           process.env.RINGY_SID,
-    authToken:     process.env.RINGY_AUTH_TOKEN,
-    phone_number:  data.phone,
-    email:         data.email,
-    first_name:    data.firstName,
-    last_name:     data.lastName,
-    zip:           data.zip,
-    coverage_type: data.coverageType,
-    reason:        data.reason,
-    age:           data.age,
-    health:        data.health,
-    budget:        data.budget,
-    beneficiary:   data.beneficiary,
-    timeline:      data.timeline,
+    sid:              process.env.RINGY_SID,
+    authToken:        process.env.RINGY_AUTH_TOKEN,
+    // Standard Ringy system fields
+    phone_number:     data.phone,
+    email:            data.email,
+    first_name:       data.firstName,
+    last_name:        data.lastName,
+    zip:              data.zip,
+    // Custom fields — displayed in the lead profile under "Other Info"
+    'Coverage Type':  data.coverageType,
+    'Reason':         data.reason,
+    'Age Range':      data.age,
+    'Health':         data.health,
+    'Monthly Budget': data.budget,
+    'Beneficiary':    data.beneficiary,
+    'Timeline':       data.timeline,
   };
 
   console.log('Sending to Ringy:', JSON.stringify({
@@ -46,19 +51,19 @@ exports.handler = async (event) => {
 
   // ── 2. Google Sheets payload ──────────────────────────────────────────────
   const sheetPayload = {
-    timestamp:    new Date().toISOString(),
-    firstName:    data.firstName,
-    lastName:     data.lastName,
-    phone:        data.phone,
-    email:        data.email,
-    zip:          data.zip,
-    coverageType: data.coverageType,
-    reason:       data.reason,
-    age:          data.age,
-    health:       data.health,
-    budget:       data.budget,
-    beneficiary:  data.beneficiary,
-    timeline:     data.timeline,
+    timestamp:      new Date().toISOString(),
+    firstName:      data.firstName,
+    lastName:       data.lastName,
+    phone:          data.phone,
+    email:          data.email,
+    zip:            data.zip,
+    coverageType:   data.coverageType,
+    reason:         data.reason,
+    age:            data.age,
+    health:         data.health,
+    budget:         data.budget,
+    beneficiary:    data.beneficiary,
+    timeline:       data.timeline,
   };
 
   // ── 3. Fire both requests in parallel ────────────────────────────────────
